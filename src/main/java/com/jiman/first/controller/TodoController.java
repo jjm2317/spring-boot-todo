@@ -5,6 +5,7 @@ import com.jiman.first.domain.Todo;
 import com.jiman.first.response.ApiResponse;
 import com.jiman.first.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,6 @@ public class TodoController {
     @PostMapping(produces = "application/json")
     public ResponseEntity createTodo(@RequestBody Todo todo) {
         todoService.createTodo(todo);
-        return ResponseEntity<>(new ApiResponse)
+        return  new ResponseEntity<ApiResponse>(new ApiResponse(200, "", "생성완료"), HttpStatus.OK);
     }
 }
